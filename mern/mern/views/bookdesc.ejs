@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/ui.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
+}
+html {
+  font-size: 72.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+  .image {
+    height: 40rem;
+    width: 40rem;
+    overflow: hidden;
+    grid-column: 1 / 2;
+    border-radius: 5px;
+  }
+  .image img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  /* .box1{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+     border-radius: 1.2rem;
+    position: relative;
+    border: none;
+    display: grid;
+  grid-template-columns: 30% 50% 20%;
+  gap: 2 rem;
+  margin: 0px;
+  margin-bottom: 2rem;
+  padding: 160px;
+  } */
+  .box1 {
+    width: 100%;
+    height: 400px; /* Set a fixed height */
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 1.2rem;
+    position: relative;
+    border: none;
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+    gap: 2rem;
+    margin: 0;
+    margin-bottom: 2rem;
+    padding: 20px; /* Adjust padding as needed */
+  }
+  .btn {
+    text-align: center;
+    border: 0.2rem solid #bc6bf6;
+    color: black;
+    cursor: pointer;
+    background: none;
+    font-size: 1.7rem;
+    border-radius: 40px;
+    width: 250px;
+    height: 50px;
+
+  }
+  .btn {
+    text-align: center;
+    border: 0.2rem solid #bc6bf6;
+    color: #bc6bf6; /* Text color */
+    cursor: pointer;
+    background: none;
+    font-size: 1.7rem;
+    border-radius: 40px;
+    width: 200px;
+    height: 50px;
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold; /* Make the text bold */
+    text-transform: uppercase; /* Convert text to uppercase */
+  }
+
+  .btn:hover {
+    background-color: #bc6bf6; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+  }
+
+  .paragraph {
+    grid-column: 2 / 3;
+    padding-right: 5rem;
+  }
+  
+  .packages .box-container .box1 .paragraph {
+    font-size: 2rem;
+    color: #10221b;
+  }
+  
+  
+  .packages .box-container .box1 .content .price {
+    font-size: 2.5rem;
+    color: #6a259c;
+    text-align: center;
+  }
+  .paragraph h1,h2,h3,h4{
+    color: #2c0a44;
+    margin-top: 0,5rem;
+    padding-left:40px;
+  }
+  h4::after{
+    display: block;
+    content: '';
+    margin-top: 5px;
+    border-bottom: 1px solid #000;
+}
+  .paragraph p{
+    color: #4c1673;
+    margin-top: 3rem;
+    text-align: justify;
+    padding-left: 40px;
+    font-size: small;
+  }
+
+  .content{
+    font-size: medium;
+    text-align: center;
+    margin-top: 15%;
+  }
+  .product-quantity {
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+  }
+  
+  .quantity-button {
+    background: #610b86;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .quantity-input {
+    width: 30px;
+    text-align: center;
+  }
+  .quantity-button.plus {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .quantity-button.minus {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  @media screen and (max-width: 768px) {
+    .box1 {
+      grid-template-columns: 100%; /* Single column layout for smaller screens */
+      height: auto; /* Let the height adjust based on content */
+    }
+
+    .paragraph {
+      grid-column: auto; /* Reset grid-column for the paragraph */
+      padding: 0; /* Remove right padding */
+      text-align: center; /* Center text on smaller screens */
+    }
+
+    .image {
+      grid-column: auto; /* Reset grid-column for the image */
+      margin-bottom: 1rem; /* Add some space below the image */
+    }
+  }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>   <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">BOOK SWAP</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link "  href="/home">Home</a>
+        </li>
+       
+          <li class="nav-item">
+            <a class="nav-link "  href="/home">About</a>
+          </li>
+         
+              <li class="nav-item">
+                <a class="nav-link "  href="/getallbooks">shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link "  href="/productpage">sell book</a>
+              </li>
+                  <li class="nav-item">
+                    <a class="nav-link "  href="/home">Contact</a>
+                  </li>
+       
+        </ul>
+
+
+                    <!-- searchbar -->
+                    <!-- <li>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </li>&nbsp;&nbsp;
+                    <li>
+                        <button class="btn signin" type="submit">Search</button>
+                      </form>
+                    </li>
+         
+          </ul> -->
+         
+          <ul class="navbar-nav mx-auto">
+          <li class="nav-item dropdown id=dropdown">
+            <a class="nav-link dropdown-toggle" href="#usedbooksforsale" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             MY ACCOUNT</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <!-- <li><a class="dropdown-item" href="registerbookswap.html">Login/SignUp</a></li> -->
+              <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+              <li><a class="dropdown-item" href="ad2.html">My Ads</a></li>
+              <li><a class="dropdown-item" href="">My Orders</a></li>
+
+              <li><a class="dropdown-item" href="">My Donations</a></li>
+              
+             
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#logout">Log Out</a></li>
+            </ul>
+            <li class="nav-item">
+                <a class="nav-link "  href="#contact">WISHLIST</a>
+              </li>
+            </ul> 
+         
+    <!-- <button class="btn  my-2 my-sm-0">My account</button>
+    <button class="btn  my-2 my-sm-0">Cart</button> -->
+       
+
+    </div>
+  </nav>
+        
+     <!-- <button class="btn  my-2 my-sm-0">My account</button>
+  <button class="btn  my-2 my-sm-0">Cart</button>
+      -->
+
+  </div>
+</nav>
+    
+        <div class="box-container"><% books.forEach(book => { %>   
+    <div class="box1">
+        <div class="image">
+            <% if (book.bookimage && book.bookimage.data) { %>
+                <img src="data:<%= book.bookimage.contentType %>;base64, <%= book.bookimage.data.toString('base64') %>">
+              <% } else { %>
+                <span>No Image Available</span>
+              <% } %>
+        </div>
+        <div class="paragraph">
+          <h1><%= book.bookName %></h1>
+          <h3>wriiten by <%= book.author %></h3>
+            <h3>#TOP SELLER</h3>
+            <!-- <h4>5K+ bought in a month</h4> -->
+            <br>
+             <h1>BOOK DESCRIPTION:</h1>       
+            <p class="bdescription"><%= book.description %></p>
+            <p>Contact the seller if you are interested to buy the book</p>
+              <br>
+            <br>
+            <h1>RENTAL OPTION:</h1>
+            <h1><%= book.rentoption %></h1>
+            <br>
+            <br>
+            <h1>Seller Details</h1>
+
+            <h2><%= book.name %></h2>
+            <h2><%= book.email %></h2>
+            <h2><%= book.phone %></h2>
+            <h2><%= book.address %></h2>
+           
+                 
+        </div>
+        <div class="content">
+            
+            <div class="price"><p><b>Rs.<%= book.yourPrice %></b></p>
+              
+            <div class="product-quantity">
+                    
+                    </div>
+
+            <button data-productname="<%= book.bookName %>" class="btn" type="button">
+           WISHLIST
+          </button>
+                <% }); %>
+
+            
+        </div>
+    </div>
+    <script>
+      // Frontend JavaScript (e.g., using Fetch API)
+const addToCartButtons = document.querySelector('.btn');
+
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', async (event) => {
+      const productName = event.target.getAttribute('data-productname');
+     
+      try {
+          const response = await fetch(`/add-to-cart/${bookName}`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ bookName })
+          });
+      if (response.ok) {
+              const addedToCart = await response.json();
+              console.log('Added to Cart:', addedToCart);
+              location.reload();
+                   // Display success message
+              // Handle UI update or page refresh as needed
+          } else {
+              console.error('Failed to add to cart');
+              alert('Failed to add to cart');
+          }
+      } catch (error) {
+          console.error('Error:', error);
+      }
+  });
+});
+
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+      
+    </body>
+</html>
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/ui.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;1,100;1,300&display=swap");
+
+/* * {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
+} */
+/* html{
+  font-size: 73%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+} */
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+        .description {
+            color: #777;
+            font-size: 16px;
+            margin-bottom: 50px;
+            text-align: justify; /* Align text justify */
+        }
+
+        /* Style for QR code */
+        .qr-code {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+        }
+    </style>
+    <title>description</title>
+</head>
+<body> 
+    <!-- Navbar -->
+    <%- include ('navbar') %>
+    <div class="bookdesc-container" style="margin: 20px; padding: 20px; border: 1px solid #ddd;"></div>
+    <div class="box-container">
+        <% books.forEach(book => { %>   
+            <div class="box1" style="display: flex; justify-content: space-between; margin-bottom: 20px; max-width: 100%; height: auto;">
+                <div class="image" style="flex: 1;">
+                    <% if (book.bookimage && book.bookimage.data) { %>
+                        <img src="data:<%= book.bookimage.contentType %>;base64, <%= book.bookimage.data.toString('base64') %>">
+                    <% } else { %>
+                        <span>No Image Available</span>
+                    <% } %>
+                </div>
+                <div class="paragraph" style="flex: 2; padding: 0 20px;">
+                    <h1 style="color: #333; font-size: 24px; margin-bottom: 10px;"><%= book.bookName %></h1>
+                    <h3 style="color: #555; font-size: 18px; margin-bottom: 10px;">written by <%= book.author %></h3>
+                    <h3 style="color: #ff0000; font-size: 18px; margin-bottom: 10px;">#TOP SELLER</h3>
+                    <br>
+                    <h1 style="font-size: 20px;">BOOK DESCRIPTION:</h1>       
+                    <p class="description"><%= book.description %></p> <!-- Align description properly -->
+                    <!-- Add container for QR code -->
+                    <div class="qr-code" id="qr-code-<%= book._id %>">
+                        <!-- QR code image will be inserted here dynamically -->
+                    </div>
+                    <h5 style="color: #777; font-size: 16px;">Contact the seller if you are interested to buy the book</h5>
+                    <br>
+                    <br>
+                    <h1 style="color: #333; font-size: 20px;">RENTAL OPTION:</h1>
+                    <h1 style="color: #333; font-size: 18px; margin-bottom: 10px;"><%= book.rentoption %></h1>
+                    <br>
+                    <br>
+                    <h1 style="color: #333; font-size: 20px;">Seller Details</h1>
+                    <h2 style="color: #555; font-size: 18px; margin-bottom: 10px;"><%= book.name %></h2>
+                    <h2 style="color: #555; font-size: 18px; margin-bottom: 10px;"><%= book.email %></h2>
+                    <h2 style="color: #555; font-size: 18px; margin-bottom: 10px;"><%= book.phone %></h2>
+                    <h2 style="color: #555; font-size: 18px; margin-bottom: 10px;"><%= book.address %></h2>
+                </div>
+                <div class="content" style="flex: 1; text-align: center;">
+                    <div class="price" style="font-weight: bold; font-size: 24px; color: #333;">
+                        <b>Rs.<%= book.yourPrice %></b>
+                    </div>
+                    <div class="product-quantity" style="margin-bottom: 10px;"></div>
+                    <button data-bookname="<%= book.bookName %>" class="btn" type="button" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                        WISHLIST
+                    </button>
+                    <div class="box"></div>
+                </div>
+            </div>
+            <script>
+                // Generate QR Code for this book dynamically
+                var qrCodeData = "Book Name: <%= book.bookName %>\\nAuthor: <%= book.author %>\\nDescription: <%= book.description %>";
+                var qrCodeElement = document.getElementById("qr-code-<%= book._id %>");
+                var qrCode = new QRCode(qrCodeElement, {
+                    text: qrCodeData,
+                    width: 300, // Adjust width to make QR code bigger
+                    height: 300, // Adjust height to make QR code bigger
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            </script>
+        <% }); %>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myads</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+</head>
+<style>
+    /* Add your CSS styles here */
+    *{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+footer{
+    width:100%;
+    height:30px;
+    background:rgba(0, 0, 0, 0.8);
+    margin-top: -30px;
+    text-align: center;
+    color:white;
+    padding:3px;
+
+ }
+
+       body{
+background-color: #DFE0DF;
+       } 
+    /* .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color:#86D6BC;
+    border: 1px solid #ddd;
+    padding: 20px;
+    color:black;
+    font-weight: bold;
+  
+    border-radius: 10px;
+    
+
+    text-align: center;
+} */
+
+
+
+
+
+a {
+    text-decoration: none;
+    color: #007acc;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: #0a1209;
+  transition: transform 0.2s;
+  width: 100%;
+  min-width: 300px;
+  min-height: 370px; /* Make each card fill the available width */
+}
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .book-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .book-price {
+      color: #007bff;
+      font-size: 16px;
+    }
+    
+    .btn{
+        background-color: #3498db; /* Set the background color */
+        color: #fff; /* Set the text color */
+        padding: 8px 16px; /* Adjust padding as needed */
+        border: none; /* Remove the border */
+        border-radius: 4px; /* Add some border-radius for rounded corners */
+        cursor: pointer; /* Add a pointer cursor on hover */
+        font-size: 14px; /* Set the font size */
+
+    }
+
+    .btn:hover {
+        background-color: #2980b9; /* Change the background color on hover */
+    }
+</style>
+<body>
+
+    <!-- navbar -->
+     <%- include ('navbar') %>
+       
+          <br>
+          <br>
+          <h1><center>My Ads</center></h1>
+
+    <div class="container">
+        <% books.forEach(book => { %>
+        <div class="card" data-bookobjid="<%= book._id %>">
+            <% if (book.bookimage && book.bookimage.contentType && book.bookimage.data) { %>
+            <img src="data:<%= book.bookimage.contentType %>;base64, <%= book.bookimage.data.toString('base64') %>"
+                alt="<%= book.bookName %>" style="width: 100%; height: 200px;">
+            <% } else { %>
+            <img src="/path/to/placeholder-image.jpg" alt="Placeholder Image" width="100" height="100">
+            <% } %>
+            <div class="card-content">
+                <div class="book-title" style="text-align: center; padding: 1px 2px 2px;"><%= book.bookName %></div>
+                <div class="book-price" style="text-align: center; padding: 1px 2px 2px;">Rs. <%= book.yourPrice %></div>
+                <!-- <div class="book-description"><%= book.description %></div> --><br>
+                <div>
+                   <center>
+
+                    <button data-bookid="<%= book._id %>" class="btn" id="deletebtn">Delete ad</button></center>
+ 
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.container');
+
+    container.addEventListener('click', function (event) {
+        if (event.target.classList.contains('btn') && event.target.id === 'deletebtn') {
+            const bookid = event.target.getAttribute('data-bookid'); // Updated attribute name
+            deleteBookFromWishlist(bookid);
+        }
+    });
+
+    function deleteBookFromWishlist(bookid) {
+        fetch(`/deletebook/${bookid}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (response.ok) {
+                const card = document.querySelector(`.card[data-bookobjid="${bookid}"]`); // Updated attribute name
+                if (card) {
+                    card.remove();
+                } else {
+                    console.error('Card not found for book:', bookid);
+                }
+            } else {
+                console.error('Error deleting book from wishlist');
+            }
+        })
+        .catch(error => {
+            console.error('Network error:', error);
+        });
+    }
+});
+
+/* search */
+       
+function filterBooks() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const bookContainer = document.getElementById('bookContainer');
+      const cards = bookContainer.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const bookTitle = card.querySelector('.book-title').innerText.toLowerCase();
+        
+        // Add other fields like author, ISBN, etc., if needed for filtering
+        // const bookAuthor = card.querySelector('.book-author').innerText.toLowerCase();
+        // const bookISBN = card.querySelector('.book-isbn').innerText.toLowerCase();
+
+        if (bookTitle.includes(searchInput)) {
+          card.style.display = 'block';
+          const deleteButton = card.querySelector('.btn');
+          deleteButton.style.display = 'block'; // Ensure explore button is visible
+        
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer><center>Copyrights @resellreads.com</center></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

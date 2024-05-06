@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOOK SWAP</title>
+  <!-- <link rel="stylesheet" href="bookswap.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  </head>
+    <style>
+      *{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+       body{
+background-color: #DFE0DF;
+       } 
+    /* .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color:#86D6BC;
+    border: 1px solid #ddd;
+    padding: 20px;
+    color:black;
+    font-weight: bold;
+  
+    border-radius: 10px;
+    
+
+    text-align: center;
+} */
+
+
+
+
+
+a {
+    text-decoration: none;
+    color: #007acc;
+}
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: #0a1209;
+  transition: transform 0.2s;
+  width: 100%;
+  min-width: 300px;
+  min-height: 400px; /* Make each card fill the available width */
+}
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .book-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .book-price {
+      color: #007bff;
+      font-size: 16px;
+    }
+
+</style>
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">BOOK SWAP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link "  href="bookswap.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link "  href="bookswap.html">About</a>
+            </li><li class="nav-item">
+              <a class="nav-link "  href="bookswap.html">Books</a>
+            </li><li class="nav-item">
+              <a class="nav-link "  href="bookswap.html">Sell book</a>
+            </li>
+              
+            </ul>
+            <ul class="navbar-nav mx-auto">
+            <li class="nav-item dropdown id=dropdown">
+              <a class="nav-link dropdown-toggle" href="#usedbooksforsale" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               MY ACCOUNT</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="registerbookswap.html">Login/SignUp</a></li>
+                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                <li><a class="dropdown-item" href="ad2.html">My Ads</a></li>
+                <li><a class="dropdown-item" href="myprofile (1).html?id=#account-social-links">My Orders</a></li>
+                <li><a class="dropdown-item" href="myprofile (1).html?id=#account-connections">My Selling Orders</a></li>
+                <li><a class="dropdown-item" href="myprofile (1).html?id=">My Donations</a></li>
+                <li><a class="dropdown-item" href="rent.html">Rented Books</a></li>
+                <!-- <li><a class="dropdown-item" href="myprofile (1).html?id=">How it works?</a></li> -->
+               
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#logout">Log Out</a></li>
+              </ul>
+              <li class="nav-item">
+                  <a class="nav-link "  href="#contact">CART</a>
+                </li>
+              </ul>
+            
+         <!-- <button class="btn  my-2 my-sm-0">My account</button>
+      <button class="btn  my-2 my-sm-0">Cart</button>
+          -->
+       
+
+      </div>
+    </nav>
+
+  <div class="container">
+    <!-- Card 1 --><% books.forEach(book => { %>
+    <div class="card">
+        <% if (book.bookimage && book.bookimage.contentType && book.bookimage.data) { %>
+            <img src="data:<%= book.bookimage.contentType %>;base64, <%= book.bookimage.data.toString('base64') %>" width="100" height="100">
+          <% } else { %>
+            <!-- Add a placeholder image or handle the case when bookimage is not available -->
+            <img src="/path/to/placeholder-image.jpg" alt="Placeholder Image" width="100" height="100">
+          <% } %>
+      <div class="card-content">
+        <div class="book-title"><%= book.bookName %></div>
+        <div class="book-price">RS <%= book.yourPrice %></div>
+        <%= book._id %>
+        <div><button data-bookobjid="<%= book._id %>" class="btn" id="bookbtn">Explore</button></div>
+      </div>
+    </div>
+      <% }); %>
+    <!-- Repeat the structure for additional books -->
+  </div>
+
+<script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const exploreButtons = document.querySelectorAll('.btn');
+          
+              exploreButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                  const bookobjid = this.getAttribute('data-bookobjid');
+                  const formattedCategoryName = encodeURIComponent(bookobjid); // Ensure the category name is URL-friendly
+               
+                  window.location.href = `/bookdesc?bookobjid=${bookobjid}`;
+                });
+              });
+            });
+</script>
+ 
+
+
+  
+    </body>
+    </html>

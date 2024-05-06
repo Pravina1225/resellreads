@@ -1,0 +1,143 @@
+<!-- wishlist.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <style>
+        /* Add your CSS styles here */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .card-content {
+            padding: 10px;
+        }
+
+        .book-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .book-price {
+            color: #007bff;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .book-description {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <% books.forEach(book => { %>
+        <div class="card" data-bookobjid="<%= book._id %>">
+            <% if (book.bookImage && book.bookImage.contentType && book.bookImage.data) { %>
+            <img src="data:<%= book.bookImage.contentType %>;base64, <%= book.bookImage.data.toString('base64') %>"
+                alt="<%= book.bookName %>" width="100" height="100">
+            <% } else { %>
+            <img src="/path/to/placeholder-image.jpg" alt="Placeholder Image" width="100" height="100">
+            <% } %>
+            <div class="card-content">
+                <div class="book-title"><%= book.bookName %></div>
+                <div class="book-price">RS <%= book.yourPrice %></div>
+                <div class="book-description"><%= book.description %></div>
+                <div>
+                    
+                    <div><button data-bookobjid="<%= book._id %>" class="btn" id="explorebtn">Explore</button></div>
+                    <button data-bookobjid="<%= book._id %>" class="btn" id="deletebtn">Delete from wishlist</button>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <script>
+        // Add your JavaScript code here
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.container');
+
+            container.addEventListener('click', function (event) {
+                if (event.target.classList.contains('btn') && event.target.id === 'explorebtn') {
+                    const bookId = event.target.getAttribute('data-bookobjid');
+                    window.location.href = `/explore/${bookId}`;
+                }
+
+                if (event.target.classList.contains('btn') && event.target.id === 'deletebtn') {
+                    const bookId = event.target.getAttribute('data-bookobjid');
+                    deleteBookFromWishlist(bookId);
+                }
+            });
+
+            function deleteBookFromWishlist(bookId) {
+                fetch(`/deletecartbook/${bookId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        const card = document.querySelector(`.card[data-bookobjid="${bookId}"]`);
+                        if (card) {
+                            card.remove();
+                        }
+                    } else {
+                        console.error('Error deleting book from wishlist');
+                    }
+                })
+                .catch(error => {
+                    console.error('Network error:', error);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

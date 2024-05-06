@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOOK SWAP</title>
+  <!-- <link rel="stylesheet" href="bookswap.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  </head>
+    <style>
+      *{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+       body{
+background-color: #DFE0DF;
+       } 
+    .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color:#86D6BC;
+    border: 1px solid #ddd;
+    padding: 20px;
+    color:black;
+    font-weight: bold;
+  
+    border-radius: 10px;
+    
+
+    text-align: center;
+}
+
+h2 {
+    margin: 0 0 20px;
+}
+
+form {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="file"],
+input[type="description"] {
+    width: 100%;
+    padding: 15px 0.5px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color:#FCEAE4;
+    font-size: medium;
+    text-indent: 10px;
+    
+    
+    
+}
+select,textarea{
+    width: 100%;
+    padding: 10px 0.5px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color:#FCEAE4;
+    font-size: medium;
+    text-indent: 10px;
+    
+    
+}
+
+input[type="submit"] {
+    background-color: #007acc;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+.btn{
+    text-align: center;
+}
+input[type="submit"]:hover {
+    background-color: #005f99;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #007acc;
+}
+
+</style>
+</head>
+<body>
+    <!-- navbar -->
+   
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">BOOK SWAP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link "  href="/home">Home</a>
+            </li>
+           
+              <li class="nav-item">
+                <a class="nav-link "  href="/home">About</a>
+              </li>
+             
+                  <li class="nav-item">
+                    <a class="nav-link "  href="/getallbooks">shop</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link "  href="/productpage">sell book</a>
+                  </li>
+                      <li class="nav-item">
+                        <a class="nav-link "  href="/home">Contact</a>
+                      </li>
+           
+            </ul>
+
+
+                        <!-- searchbar -->
+                        <!-- <li>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        </li>&nbsp;&nbsp;
+                        <li>
+                            <button class="btn signin" type="submit">Search</button>
+                          </form>
+                        </li>
+             
+              </ul> -->
+             
+              <ul class="navbar-nav mx-auto">
+              <li class="nav-item dropdown id=dropdown">
+                <a class="nav-link dropdown-toggle" href="#usedbooksforsale" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 MY ACCOUNT</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <!-- <li><a class="dropdown-item" href="registerbookswap.html">Login/SignUp</a></li> -->
+                  <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                  <li><a class="dropdown-item" href="ad2.html">My Ads</a></li>
+                  <li><a class="dropdown-item" href="">My Orders</a></li>
+
+                  <li><a class="dropdown-item" href="">My Donations</a></li>
+                  
+                 
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#logout">Log Out</a></li>
+                </ul>
+                <li class="nav-item">
+                    <a class="nav-link "  href="#contact">WISHLIST</a>
+                  </li>
+                </ul> 
+             
+        <!-- <button class="btn  my-2 my-sm-0">My account</button>
+        <button class="btn  my-2 my-sm-0">Cart</button> -->
+           
+
+        </div>
+      </nav>
+            
+         <!-- <button class="btn  my-2 my-sm-0">My account</button>
+      <button class="btn  my-2 my-sm-0">Cart</button>
+          -->
+
+      <br>
+      <br>
+      <div class="container">
+        
+        <h1>Upload a Book for Resale</h1>
+    <form action="/sellbook" method="post" enctype="multipart/form-data">
+      <label for="bookId">ISBN Number:</label>
+      <input type="text" id="bookId" name="bookId" required pattern="[0-9]{13}" title="Please enter a valid 13-digit ISBN number.">
+
+        <label for="bookName">Book Name:</label>
+        <input type="text" id="bookName" name="bookName" required pattern=".{1,255}" title="Please enter a book name (1-255 characters).">
+
+        <label for="edition">Edition</label>
+        <input type="text" id="edition" name="edition" required >
+        
+        <label for="author">Author Name:</label>
+        <input type="text" id="author" name="author" required>
+        <label for="bookCondition">Condition:</label>
+        <select id="bookCondition" name="bookCondition" required>
+            <option value="new">New</option>
+            <option value="like_new">Like New</option>
+            <option value="good">Good</option>
+            <option value="acceptable">Acceptable</option>
+        </select>
+        <label for="bookType">Book Type</label>
+        <input type="text" id="bookType" name="bookType" required >
+        <label for="rentoption">Rent option</label>
+    
+        <select name="rentoption" id="rentoption">
+          <option value="available">available</option>
+          <option value="not available">not available</option>
+        </select>
+        <label for="yourPrice">Price:</label>
+        <input type="number" id="yourprice" name="yourPrice" required pattern="[0-9]+(\.[0-9]{2})?" title="Please enter a valid price (e.g., 10.99).">
+
+        <label for="shippingCharges">Shipping Charge:</label>
+        <input type="number" id="shippingCharges" name="shippingCharge" required pattern="[0-9]+(\.[0-9]{2})?" title="Please enter a valid shipping charge (e.g., 5.00).">
+
+        <!-- <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required pattern="[0-9]+" title="Please enter a valid quantity (positive whole number)."> -->
+
+        <label for="image">Book Image:</label>
+        <input type="file" id="image" name="bookimage" accept="image/*" required>
+
+        <label for="publisher">Publisher</label>
+        <input type="text" id="publisher" name="publisher" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea>
+         <!-- <label for="payment">preferred Payment Mode</label>
+        -->
+        <br>
+        <br>
+        <h3>Seller Details</h3>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"  required>
+        <label for="phone">Phone:</label>
+        <input type="number" id="phone" name="phone" required>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+     
+        <div class="btn">
+            <input type="submit"  value="Upload Book">
+        </div>
+    
+    </form>
+        
+    </div>
+    <br>
+    <br>
+  
+    <footer>Copyrights @bookswap.com</footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+      
+<!-- <footer>Copyrights @frontendforever 2023</footer> -->
+   
+</body>
+</html>

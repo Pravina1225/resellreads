@@ -1,0 +1,669 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* home */
+#home{
+    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.4)),url(../img/book2.jpg);
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+
+#home h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 5ch;
+    font-size: 100px;
+    color:#fff
+    
+}
+#home p{
+    color:#fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+#home .input-group{
+width:40%;
+height:45px;
+
+}
+
+.signin{
+background:tan !important;
+color:#fff;
+box-shadow:3px 4px 4px;
+}
+
+
+
+/* about */
+
+
+#about{
+    background:#ded4c5;
+
+}
+
+#about h1{
+    font-size: 50px;
+    font: weight 800%;;
+    color:black;
+}
+#about p{
+    color:black;
+
+}
+
+/* products */
+
+#product{
+   background: #e5e5e5;
+}
+
+
+#product h1{
+
+    font-size: 50px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+#product img{
+width:250px;
+height:200px;
+}
+
+
+.homecard{
+    width: 150px;
+    height:170px;
+    background: #e5e5e5 !important;
+    border:none !important;
+    box-shadow: 15px 20px 20px rgba(0,0,0,.3), inset 4px 4px 10px white;
+    overflow: hidden;
+    align-items: center;
+    margin: 20px 60px;
+    border-radius: 10px;
+}
+
+
+/* .card:hover{
+    box-shadow: inset 5px 5px 5px rgba(0,0,0,.3), 
+              inset -4px -4px 10px white;
+} */
+
+#contact img{
+    height:300px;
+    width:400px;
+}
+.box{
+    width:80% !important;
+   
+margin-top:10px;
+}
+form{
+    display:flex;
+    flex-direction: column;
+}
+ #contact input{
+    margin:10px 0px;
+ }
+ #contact textarea{
+    margin:10px 0px;
+ }
+ footer{
+    width:100%;
+    height:30px;
+    background:rgba(0, 0, 0, 0.8);
+    margin-top: -30px;
+    text-align: center;
+    color:white;
+    padding:3px;
+
+ }
+ .card-img-top{
+    width: 100px;
+    height: 100px;
+ }
+ .card-body text-center{
+
+    align-items: center;
+ }
+
+
+
+
+ /* slider */
+ .sliderheadingandcontent{
+    background: #e5e5e5;
+ }
+ .body-containerslider{
+    /* background-color:#ded4c5; */
+   
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    padding-top: 0px;
+  }
+  
+  .swiper{
+    max-width: 1120px;
+    width :100%;
+    background-color:lightgrey;
+    padding: 40px 0px;
+  }
+  .slide-content{
+    margin: 0 40px;
+  }
+  
+  .card{
+    width: 320px;
+    border-radius: 25px;
+    background-color: #EFEFEF;
+    
+  }
+  .image-content,
+  .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+  }
+  .image-content{
+    position: relative;
+    row-gap:5px;
+    padding: 25px 0;
+  
+  }
+  .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(197, 197, 229);
+    border-radius: 25px 25px 0 25px;
+  }
+  .overlay::before,
+  .overlay::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    width: 40px;
+    background-color:rgb(197, 197, 229);
+  }
+  .overlay::after{
+    border-radius: 0 25px 0 0;
+    background-color: #EFEFEF;
+  }
+  .card-image {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    
+    background: #FFF;
+    padding: 3px;
+  
+  }
+  .card-image .card-img{
+   height: 100%;
+   width:100%;
+   object-fit: cover;
+  
+  }
+  .bookname{
+    font-size: 18px;
+    font-weight: 500;
+    columns: #333;
+  }
+  .description{
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+  }
+  .button{
+    border:none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #4070F4;
+    border-radius: 6px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .button:hover{
+    background: #265df2;
+  }
+ 
+  #howitworks{
+    
+   margin: 20px 60px;
+    border-radius: 10px;
+  }
+  .tag{
+    text-align: center;
+    font-weight: bold;
+background-color: #f5e8df;
+  }
+
+  /* donate */
+
+  .donate-card{
+    margin-top: 30px;
+    padding: 10px;
+    height: 250px;
+    background-color:#f5e8df;
+}
+.donate-content{
+    padding: 20px;
+}
+
+.linkdonate{
+    color:red;
+}
+#donate{
+    color:red;
+}
+.content-section {
+padding: 20px;
+position: relative; 
+}
+
+.right-aligned-image {
+float: right; 
+margin: 0 0 10px 10px; 
+width: 200px;
+height: auto;
+margin-right: 90px;
+}@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* home*/
+#home{
+    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.4)),url(/assets/book2.jpg);
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+
+#home h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 5ch;
+    font-size: 100px;
+    color:#fff
+    
+}
+#home p{
+    color:#fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+#home .input-group{
+width:40%;
+height:45px;
+
+}
+
+.signin{
+background:tan !important;
+color:#fff;
+box-shadow:3px 4px 4px;
+}
+
+
+
+/* about */
+
+
+#about{
+    background:#ded4c5;
+
+}
+
+#about h1{
+    font-size: 50px;
+    font: weight 800%;;
+    color:black;
+}
+#about p{
+    color:black;
+
+}
+
+/* products */
+
+#product{
+   background: #e5e5e5;
+}
+
+
+#product h1{
+
+    font-size: 50px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+#product img{
+width:250px;
+height:200px;
+}
+
+
+.homecard{
+    width: 150px;
+    height:170px;
+    background: #e5e5e5 !important;
+    border:none !important;
+    box-shadow: 15px 20px 20px rgba(0,0,0,.3), inset 4px 4px 10px white;
+    overflow: hidden;
+    align-items: center;
+    margin: 20px 60px;
+    border-radius: 10px;
+}
+
+
+/* .card:hover{
+    box-shadow: inset 5px 5px 5px rgba(0,0,0,.3), 
+              inset -4px -4px 10px white;
+} */
+
+#contact img{
+    height:300px;
+    width:400px;
+}
+.box{
+    width:80% !important;
+   
+margin-top:10px;
+}
+form{
+    display:flex;
+    flex-direction: column;
+}
+ #contact input{
+    margin:10px 0px;
+ }
+ #contact textarea{
+    margin:10px 0px;
+ }
+ footer{
+    width:100%;
+    height:30px;
+    background:rgba(0, 0, 0, 0.8);
+    margin-top: -30px;
+    text-align: center;
+    color:white;
+    padding:3px;
+
+ }
+ .card-img-top{
+    width: 100px;
+    height: 100px;
+ }
+ .card-body text-center{
+
+    align-items: center;
+ }
+
+
+
+
+ /* slider */
+ .sliderheadingandcontent{
+    background: #e5e5e5;
+ }
+ .body-containerslider{
+    /* background-color:#ded4c5; */
+   
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    padding-top: 0px;
+  }
+  
+  .swiper{
+    max-width: 1120px;
+    width :100%;
+    background-color:lightgrey;
+    padding: 40px 0px;
+  }
+  .slide-content{
+    margin: 0 40px;
+  }
+  
+  .card{
+    width: 320px;
+    border-radius: 25px;
+    background-color: #EFEFEF;
+    
+  }
+  .image-content,
+  .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+  }
+  .image-content{
+    position: relative;
+    row-gap:5px;
+    padding: 25px 0;
+  
+  }
+  .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(197, 197, 229);
+    border-radius: 25px 25px 0 25px;
+  }
+  .overlay::before,
+  .overlay::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    width: 40px;
+    background-color:rgb(197, 197, 229);
+  }
+  .overlay::after{
+    border-radius: 0 25px 0 0;
+    background-color: #EFEFEF;
+  }
+  .card-image {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    
+    background: #FFF;
+    padding: 3px;
+  
+  }
+  .card-image .card-img{
+   height: 100%;
+   width:100%;
+   object-fit: cover;
+  
+  }
+  .bookname{
+    font-size: 18px;
+    font-weight: 500;
+    columns: #333;
+  }
+  .description{
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+  }
+  .button{
+    border:none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #4070F4;
+    border-radius: 6px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .button:hover{
+    background: #265df2;
+  }
+ 
+  #howitworks{
+    
+   margin: 20px 60px;
+    border-radius: 10px;
+  }
+  .tag{
+    text-align: center;
+    font-weight: bold;
+background-color: #f5e8df;
+  }
+
+  /* donate */
+
+  .donate-card{
+    margin-top: 30px;
+    padding: 10px;
+    height: 250px;
+    background-color:#f5e8df;
+}
+.donate-content{
+    padding: 20px;
+}
+
+.linkdonate{
+    color:red;
+}
+#donate{
+    color:red;
+}
+.content-section {
+padding: 20px;
+position: relative; 
+}
+
+.right-aligned-image {
+float: right; 
+margin: 0 0 10px 10px; 
+width: 200px;
+height: auto;
+margin-right: 90px;
+} 

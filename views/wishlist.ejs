@@ -1,0 +1,282 @@
+<!-- wishlist.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+    <style>
+
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+        /* Add your CSS styles here */
+        
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: #0a1209;
+  transition: transform 0.2s;
+  width: 100%;
+  min-width: 300px;
+  min-height: 370px; /* Make each card fill the available width */
+}
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      /* width: 100%;
+      height: auto; */
+      border-bottom: 1px solid #ddd;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .book-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .book-price {
+      color: #007bff;
+      font-size: 16px;
+    }
+    
+    .btn{
+        background-color: #3498db; /* Set the background color */
+        color: #fff; /* Set the text color */
+        padding: 8px 16px; /* Adjust padding as needed */
+        border: none; /* Remove the border */
+        border-radius: 4px; /* Add some border-radius for rounded corners */
+        cursor: pointer; /* Add a pointer cursor on hover */
+        font-size: 14px; /* Set the font size */
+
+    }
+
+    .btn:hover {
+        background-color: #2980b9; /* Change the background color on hover */
+    }
+
+
+        footer{
+    width:100%;
+    height:30px;
+    background:rgba(0, 0, 0, 0.8);
+    margin-top: -30px;
+    text-align: center;
+    color:white;
+    padding:3px;
+
+ }
+    </style>
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">RESELL READS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link "  href="/home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link "  href="/home">About</a>
+              </li><li class="nav-item">
+                <a class="nav-link "  href="/getallbooks">Shop</a>
+              </li><li class="nav-item">
+                <a class="nav-link "  href="/productpage">Sell book</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link "  href="/home">Contact</a>
+              </li>
+              </ul>
+<!--   
+              <form class="d-flex mx-auto">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" oninput="filterBooks()">
+              </form> -->
+              
+          <!-- <button class="btn btn-outline-success" type="button" id="searchBtn">Search</button> -->
+        
+                
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item dropdown id=dropdown">
+              <a class="nav-link dropdown-toggle" href="#usedbooksforsale" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               MY ACCOUNT</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <!-- <li><a class="dropdown-item" href="registerbookswap.html">Login/SignUp</a></li> -->
+                <li><a class="dropdown-item" href="/myprofile">My Profile</a></li>
+                <li><a class="dropdown-item" href="/getmyads">My Ads</a></li>
+
+                <li><a class="dropdown-item" href="">My Donations</a></li>
+                
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+              </ul>
+              <li class="nav-item">
+                  <a class="nav-link "  href="/wishlist">WISHLIST</a>
+                </li>
+              </ul> 
+              
+           <!-- <button class="btn  my-2 my-sm-0">My account</button>
+        <button class="btn  my-2 my-sm-0">Cart</button>
+            -->
+         
+  
+        </div>
+      </nav>
+  <!--home -->
+         <br>
+         <br>
+         <h1><center> MY WISHLIST</center></h1>
+    <div class="container">
+        <% wishitems.forEach(book => { %>
+        <div class="card" data-bookobjid="<%= book._id %>">
+            <% if (book.bookImage && book.bookImage.contentType && book.bookImage.data) { %>
+            <img src="data:<%= book.bookImage.contentType %>;base64, <%= book.bookImage.data.toString('base64') %>"
+                alt="<%= book.bookName %>" style="width: 100%; height: 200px;">
+            <% } else { %>
+            <img src="/path/to/placeholder-image.jpg" alt="Placeholder Image" width="100" height="100">
+            <% } %>
+            <div class="card-content">
+                <div class="book-title"  style="text-align: center; padding: 1px 2px 2px;"><%= book.bookName %></div>
+        <div class="book-price" style="text-align: center; padding: 1px 10px 2px;">Rs. <%= book.bookPrice %></div>
+                <!-- <div class="book-title"><%= book.bookName %></div>
+                <div class="book-price">RS <%= book.yourPrice %></div> -->
+                <div class="book-description"><%= book.description %></div><br>
+                <div>
+                    <div>
+                        <center>                                                                    
+                            <!-- <button data-bookname="<%= book.bookName %>" class="btn" id="explorebtn">Explore</button> -->
+                        </center>
+                    </div><center>
+                    <button data-bookname="<%= book.bookName %>" class="btn" id="deletebtn">Delete from wishlist</button></center>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <script>
+        // Add your JavaScript code here
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.container');
+
+            container.addEventListener('click', function (event) {
+            if (event.target.classList.contains('btn') && event.target.id === 'explorebtn') {
+                const bookName = event.target.getAttribute('data-bookname');
+                window.location.href = `/explore/${bookName}`;
+            }
+
+            if (event.target.classList.contains('btn') && event.target.id === 'deletebtn') {
+                const bookname = event.target.getAttribute('data-bookname');
+                deleteBookFromWishlist(bookname); // Fix: Pass bookname instead of bookId
+            }
+        });
+
+            function deleteBookFromWishlist(bookname) {
+                fetch(`/deletecartbook/${bookname}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        const card = document.querySelector(`.card[data-bookname="${bookname}"]`);
+                        window.location.reload();
+                        if (card) {
+                            card.remove();
+                            
+                            
+                        }
+                    } else {
+                        console.error('Error deleting book from wishlist');
+                    }
+                })
+                .catch(error => {
+                    console.error('Network error:', error);
+                });
+            }
+        });
+    </script>
+<!-- <footer>Copyrights @bookswap.com</footer> -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

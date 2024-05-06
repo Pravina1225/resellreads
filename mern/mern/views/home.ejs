@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOK SWAP</title>
+    <!-- <link rel="stylesheet" href="/static/home.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
+   <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#navbar{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 100;
+    padding: .5rem .5rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    background:#fbd8a4;
+}
+
+.navbar .navbar-brand{
+    font-size: 25px;
+    font-weight: 800;
+    color: #0a1209 !important;
+}
+#navbarSupportedContent a{
+    color:black;
+    border-bottom:2px solid transparent;
+}
+
+#navbarSupportedContent a:hover{
+    border-bottom: 2px solid #29f700;
+}
+#dropdown a{
+    color:black;
+}
+#navbarSupportedContent button{
+    background: #29f700;
+    text-align:end;
+    width:5rem;
+    border-radius: 15px;
+}
+
+
+section{
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* home*/
+#home{
+    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.4)),url(/assets/book2.jpg);
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+}
+
+#home h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 3px;
+    text-shadow: 5ch;
+    font-size: 100px;
+    color:#fff
+    
+}
+#home p{
+    color:#fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+#home .input-group{
+width:40%;
+height:45px;
+
+}
+
+.signin{
+background:tan !important;
+color:#fff;
+box-shadow:3px 4px 4px;
+}
+
+
+
+/* about */
+
+
+#about{
+    background:#ded4c5;
+
+}
+
+#about h1{
+    font-size: 50px;
+    font: weight 800%;;
+    color:black;
+}
+#about p{
+    color:black;
+
+}
+
+/* products */
+
+#product{
+   background: #e5e5e5;
+}
+
+
+#product h1{
+
+    font-size: 50px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+#product img{
+width:250px;
+height:200px;
+}
+
+
+.homecard{
+    width: 150px;
+    height:170px;
+    background: #e5e5e5 !important;
+    border:none !important;
+    box-shadow: 15px 20px 20px rgba(0,0,0,.3), inset 4px 4px 10px white;
+    overflow: hidden;
+    align-items: center;
+    margin: 20px 60px;
+    border-radius: 10px;
+}
+
+
+/* .card:hover{
+    box-shadow: inset 5px 5px 5px rgba(0,0,0,.3), 
+              inset -4px -4px 10px white;
+} */
+
+#contact img{
+    height:300px;
+    width:400px;
+}
+.box{
+    width:80% !important;
+   
+margin-top:10px;
+}
+form{
+    display:flex;
+    flex-direction: column;
+}
+ #contact input{
+    margin:10px 0px;
+ }
+ #contact textarea{
+    margin:10px 0px;
+ }
+ footer{
+    width:100%;
+    height:30px;
+    background:rgba(0, 0, 0, 0.8);
+    margin-top: -30px;
+    text-align: center;
+    color:white;
+    padding:3px;
+
+ }
+ .card-img-top{
+    width: 100px;
+    height: 100px;
+ }
+ .card-body text-center{
+
+    align-items: center;
+ }
+
+
+
+
+ /* slider */
+ .sliderheadingandcontent{
+    background: #e5e5e5;
+ }
+ .body-containerslider{
+    /* background-color:#ded4c5; */
+   
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    padding-top: 0px;
+  }
+  
+  .swiper{
+    max-width: 1120px;
+    width :100%;
+    background-color:lightgrey;
+    padding: 40px 0px;
+  }
+  .slide-content{
+    margin: 0 40px;
+  }
+  
+  .card{
+    width: 320px;
+    border-radius: 25px;
+    background-color: #EFEFEF;
+    
+  }
+  .image-content,
+  .card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+  }
+  .image-content{
+    position: relative;
+    row-gap:5px;
+    padding: 25px 0;
+  
+  }
+  .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(197, 197, 229);
+    border-radius: 25px 25px 0 25px;
+  }
+  .overlay::before,
+  .overlay::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    width: 40px;
+    background-color:rgb(197, 197, 229);
+  }
+  .overlay::after{
+    border-radius: 0 25px 0 0;
+    background-color: #EFEFEF;
+  }
+  .card-image {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    
+    background: #FFF;
+    padding: 3px;
+  
+  }
+  .card-image .card-img{
+   height: 100%;
+   width:100%;
+   object-fit: cover;
+  
+  }
+  .bookname{
+    font-size: 18px;
+    font-weight: 500;
+    columns: #333;
+  }
+  .description{
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+  }
+  .button{
+    border:none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #4070F4;
+    border-radius: 6px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .button:hover{
+    background: #265df2;
+  }
+ 
+  #howitworks{
+    
+   margin: 20px 60px;
+    border-radius: 10px;
+  }
+  .tag{
+    text-align: center;
+    font-weight: bold;
+background-color: #f5e8df;
+  }
+
+  /* donate */
+
+  .donate-card{
+    margin-top: 30px;
+    padding: 10px;
+    height: 250px;
+    background-color:#f5e8df;
+}
+.donate-content{
+    padding: 20px;
+}
+
+.linkdonate{
+    color:red;
+}
+#donate{
+    color:red;
+}
+.content-section {
+padding: 20px;
+position: relative; 
+}
+
+.right-aligned-image {
+float: right; 
+margin: 0 0 10px 10px; 
+width: 200px;
+height: auto;
+margin-right: 90px;
+} 
+    </style> 
+</head>
+
+<body>
+    <!-- navbar -->
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">BOOK SWAP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link "  href="#home">Home</a>
+            </li>
+           
+              <li class="nav-item">
+                <a class="nav-link "  href="#about">About</a>
+              </li>
+             
+                  <li class="nav-item">
+                    <a class="nav-link "  href="/getallbooks">shop</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link "  href="/productpage">sell book</a>
+                  </li>
+                      <li class="nav-item">
+                        <a class="nav-link "  href="#contact">Contact</a>
+                      </li>
+           
+            </ul>
+
+
+                        <!-- searchbar -->
+                        <!-- <li>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        </li>&nbsp;&nbsp;
+                        <li>
+                            <button class="btn signin" type="submit">Search</button>
+                          </form>
+                        </li>
+             
+              </ul> -->
+             
+              <ul class="navbar-nav mx-auto">
+              <li class="nav-item dropdown id=dropdown">
+                <a class="nav-link dropdown-toggle" href="#usedbooksforsale" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 MY ACCOUNT</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <!-- <li><a class="dropdown-item" href="registerbookswap.html">Login/SignUp</a></li> -->
+                  <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                  <li><a class="dropdown-item" href="ad2.html">My Ads</a></li>
+                  <li><a class="dropdown-item" href="">My Orders</a></li>
+
+                  <li><a class="dropdown-item" href="">My Donations</a></li>
+                  
+                 
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#logout">Log Out</a></li>
+                </ul>
+                <li class="nav-item">
+                    <a class="nav-link "  href="/cart">WISHLIST</a>
+                  </li>
+                </ul> 
+             
+        <!-- <button class="btn  my-2 my-sm-0">My account</button>
+        <button class="btn  my-2 my-sm-0">Cart</button> -->
+           
+
+        </div>
+      </nav>
+<!--home -->
+
+<section id="home">
+    <h1 class="text-center">BOOK SWAP</h1>
+    <p>Online Reselling and Purchasing</p>
+    <p>"Selling used second hand books at your own desired price is not an uphill battle anymore. Just sell them on BOOK SWAP!"</p>
+    <div class="input-group m-4">
+        <input type="text" class="form-control" placeholder="Email Address">
+        <a href="profile.html" class="btn signin">Get Started</a>
+
+    </div>
+    
+   <div class="row">
+   <div class="col-lg-5 col-md-5 col-10">
+    <div class="homecard"><center>
+        <img src="/assets/handbook.svg"  class="card-img-top" ></center>
+        <div class="card-body text-center">
+          <h5 class="card-title"></h5>
+         
+          <a href="#" class="btn signin">BUY</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="col-lg-4 col-md-4 col-12">
+    <p class="text-center">or</p>
+   </div> -->
+    <div class="col-lg-5 col-md-5 col-10">
+      <div class="homecard"><center>
+        <img src="/assets/hand-money.svg" class="card-img-top" alt="..."></center>
+        <div class="card-body text-center">
+          <h5 class="card-title"></h5>
+         
+          <a href="ad2.html" class="btn btn signin">SELL</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</section>
+
+
+<section id="about">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+<img src="/assets/banner-1.jpg" height="500" width="700">
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 p-lg-5 p-2 my-2">
+                <h1>ABOUT US</h1>
+                <p>In the world of online purchasing and reselling, we are passionate about providing a seamless and convenient experience for individuals looking to sell or repurchase their items with ease.
+
+                We believe that your belongings should have a second life. Whether you have items you no longer need or are on the hunt for quality, pre-loved products, we have got you covered.</p>
+                <h3>Our Mission:</h3>
+                <p>Our mission is to make the process of selling and repurchasing items as simple as possible. We aim to create a sustainable and circular economy where items are reused and can be donated for charity, reducing waste and promoting responsible consumption.</p>
+                <h3>Our Team:</h3>
+                <p>Our dedicated team is here to support you throughout your journey. We're committed to providing the best service and fostering a sense of trust and community.
+                
+                Thank you for joining us on this exciting repurchasing and selling adventure. Together, we can make a difference in the way we consume and share our items.</p>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+<div class="donate-container">
+        
+  <div class="donate-card">
+      <div class="content-section">
+          <img src="/assets/donate.jpg" alt="Image" class="right-aligned-image">
+      </div>
+      <div class="donate-content"><h3 id="donate">Spread The Joy Of Reading</h3>
+  <p id="donate-para">Let the pages that inspire you the next generation of readers.Donate your favourite books to our charity.</p>
+  
+  <a class="linkdonate" href="#" >Donate Now</a>
+
+</div>
+</div>
+</div>
+
+
+ <div id="howitworks">
+  <h3 class="text-center my-5">How to SELL your old books online on BOOK SWAP?</h3>
+  <h5 class="text-center my-5">"Earning money by selling your old books is just three steps away from you:)"</h5>
+  <div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <div class="tag">
+          <div class="ribbon-label">STEP 1</div>
+        </div>
+          <br><center>
+        <img src="/assets/sells1.svg" class="card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title"><center><b>Post an ad for selling used books</b></center></h5>
+          <p class="card-text"><center>Post an ad on BOOK SWAP describing your book details to sell your old books online.</center></p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="tag">
+          <div class="ribbon-label">STEP 2</div>
+        </div>
+          <br><center>
+        <img src="/assets/sells2.svg" class="card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title"><center>Set the selling price for your books</center></h5>
+          <p class="card-text"><center>Set the price for your books at which you want to sell them.</center></p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="tag">
+          <div class="ribbon-label">STEP 3</div>
+        </div>
+          <br><center>
+        <img src="/assets/sells3.svg" class="card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title"><center>Get paid into your UPI/Bank account</center></h5>
+          <p class="card-text"><center>You will get money into your account once you receive an order for your book.</center></p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+  <h3 class="text-center my-5">How to BUY second hand books online on BOOK SWAP?</h3>
+  <h5 class="text-center my-5">"Well, you can buy second hand books very easily on BOOK SWAP."</h5>
+  <h5 class="text-center my-5">"Saving some good amount of money by buying used (preloved) books is just 3 steps away from you :)"</h5>
+  <div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <div class="tag">
+          <div class="ribbon-label">STEP 1</div>
+        </div>
+          <br><center>
+        <img src="/assets/buys1.svg" class="card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title"><center><b>Select the used books you want</b></center></h5>
+          <p class="card-text"><center>Search from over thousands of used books listed on BOOK SWAP.</center></p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="tag">
+        <div class="ribbon-label">STEP 2</div>
+      </div>
+        <br><center>
+        <img src="/assets/buys2.svg" class="card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title"><center>Place the order by making payment to BOOK SWAP</center></h5>
+          <p class="card-text"><center>Then simply place the order by clicking on 'Buy Now' button.</center></p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100">
+        <div class="tag">
+          <div class="ribbon-label">STEP 3</div>
+        </div>
+          <br><center>
+        <img src="/assets/buys3.svg" class="card-img-top" alt="..."></center>
+        <div class="card-body">
+          <h5 class="card-title"><center>Get the books delivered at your doorstep</center></h5>
+          <p class="card-text"><center>The books will be delivered to you at your doorstep!</center></p>
+        </div>
+        <!-- <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- contact -->
+
+<section id="contact">
+    <div class="container box">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+             <img src="/assets/msg.jpg" class="img-fluid">
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+            <h1> CONTACT US</h1>
+<form action="">
+    <input type="text" class="form-control" placeholder="Enter your name">
+    <input type="text" class="form-control" placeholder="Enter your mail">
+    <textarea class="form-control" placeholder="Enter your message/Query"></textarea>
+    <button class="btn signin">Send Message</button>
+</form>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<footer>Copyrights @bookswap.com</footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
